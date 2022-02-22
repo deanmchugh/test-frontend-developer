@@ -18,11 +18,11 @@ Answer:
 
 ## What technology stack do you choose for your proposed solution, and why?
 
-Answer: 
+Answer: My solution is built in React using Typescript. Using these two in conjunction reduces the error rate while in development. Using strict typing ensures correctness of input and output of functions.
 
 ## How will you deploy your solution?
 
-Answer: 
+Answer: Using webpack allows the application to be reduces to a simplified html, css and js file. This means that the application can be deployed to any number of static file hosting platform.
 
 ## How will you ensure that user data is secure?
 

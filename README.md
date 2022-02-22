@@ -40,3 +40,29 @@ Not all requirements may have been provided, you may interpret some direction ba
 Once all your unit tests pass, push your code to the forked `frontend-developer-test` on your personal GitHub account, and send us the link to your GitHub repository with your solution.
 
 Please do not create a Pull Request against our source repository.
+
+# Installation instsutuctions for todo application
+
+## To install all dependencies run
+
+```
+npm i
+```
+
+## ***To bundle bundle the project using webpack for development run
+
+```
+npm run build:dev
+```
+
+## ***Or to bundle bundle the project using webpack for production run
+
+```
+npm run build:prod
+```
+
+## To serve the project using webpack run
+
+```
+npm run serve
+```
