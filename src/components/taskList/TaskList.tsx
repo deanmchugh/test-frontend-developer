@@ -1,4 +1,5 @@
 import useTasks from '../../state/hook/useTasks'
+import ErrorModal from '../error/ErrorModal'
 import ClearTasksModal from '../taskClear/ClearTasksModal'
 import DefaultMessage from './DefaultMessage'
 import TaskItem from './TaskItem'
@@ -14,6 +15,7 @@ function TaskList() {
           : <DefaultMessage text="No Current Tasks" />
       }
       <ClearTasksModal />
+      <ErrorModal />
     </div>
   )
 }

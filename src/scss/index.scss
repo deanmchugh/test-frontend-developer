@@ -94,19 +94,19 @@
     }
 }
 
-.clear-tasks-modal-wrapper {
+.modal-wrapper {
     @extend %component-wrapper;
     position: fixed;
     z-index: 5;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    button {
+        @extend %component-wrapper;
+    }
     > div {
         display: flex;
         justify-content: space-around;
         gap: 5px;
-        > button {
-            @extend %component-wrapper;
-        }
     }
 }

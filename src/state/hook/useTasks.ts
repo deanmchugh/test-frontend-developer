@@ -7,6 +7,7 @@ import updateTaskComplete from '../../helpers/updateTaskComplete'
 import { TasksContext } from '../context/TasksContextProvider'
 
 type TaskHook = {
+  error: boolean
   tasks: Tasks
   allTasksCompleted: boolean
   addTask: (text: string) => void
@@ -16,11 +17,11 @@ type TaskHook = {
 }
 
 function useTasks(): TaskHook {
-  const [tasks, setTasks] = useContext(TasksContext)
+  const [{ error, tasks }, setTasks] = useContext(TasksContext)
 
   const allTasksCompleted = checkAllTasksCompleted(tasks)
 
-  const addTask = (text: string) => setTasks((curr) => [...curr, createTask(text)])
+  const addTask = (text: string) => setTasks([...tasks, createTask(text)])
 
   const updateTask = (id: string) => setTasks(updateTaskComplete(id, tasks))
 
@@ -29,7 +30,7 @@ function useTasks(): TaskHook {
   const clearTasks = () => setTasks([])
 
   return {
-    tasks, allTasksCompleted, addTask, updateTask, deleteTask, clearTasks,
+    error, tasks, allTasksCompleted, addTask, updateTask, deleteTask, clearTasks,
   }
 }
 

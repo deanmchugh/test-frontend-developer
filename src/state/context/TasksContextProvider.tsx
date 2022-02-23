@@ -1,20 +1,14 @@
 import {
-  createContext, Dispatch, ReactChild, SetStateAction, useMemo, useState,
+  createContext, ReactChild, useMemo, useState,
 } from 'react'
 import { Tasks } from '../../@types/Task'
 
-const initalState: Tasks = [{
-  id: '1',
-  isCompleted: false,
-  text: 'test',
-}, {
-  id: '2',
-  isCompleted: true,
-  text: 'test',
-}]
+type State = {error: boolean, tasks: Tasks}
 
-type Action = Dispatch<SetStateAction<Tasks>>
-type Context = [Tasks, Action]
+const initalState: State = { error: false, tasks: [] }
+
+type Action = (tasks: Tasks) => void
+type Context = [State, Action]
 
 export const TasksContext = createContext<Context>(null)
 
@@ -23,8 +17,17 @@ type Props = {
 }
 
 export function TasksContextProvider({ children }: Props) {
-  const [tasks, setTasks] = useState(initalState)
-  const value: Context = useMemo(() => [tasks, setTasks], [tasks])
+  const [context, setContext] = useState(initalState)
+
+  const errorHandler = (tasks: Tasks) => {
+    try {
+      setContext({ error: false, tasks })
+    } catch (e) {
+      setContext({ error: true, tasks })
+    }
+  }
+
+  const value: Context = useMemo(() => [context, errorHandler], [context])
 
   return (
     <TasksContext.Provider value={value}>

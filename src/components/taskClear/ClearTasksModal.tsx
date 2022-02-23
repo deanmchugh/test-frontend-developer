@@ -11,7 +11,7 @@ function ClearTasksModal() {
 
   return (
     <dialog
-      className="clear-tasks-modal-wrapper"
+      className="modal-wrapper"
       open={open}
     >
       All Tasks Completed!
